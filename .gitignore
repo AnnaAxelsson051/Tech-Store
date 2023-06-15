@@ -1,0 +1,4 @@
+**/bin/*
+**/obj/*
+**/Migrations/*
+appsettings.Development.json
