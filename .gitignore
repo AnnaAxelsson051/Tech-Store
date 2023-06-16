@@ -2,3 +2,30 @@
 **/obj/*
 **/Migrations/*
 appsettings.Development.json
+
+# Dependency directories
+/node_modules
+/.pnp
+.pnp.js
+
+# Built output
+/build
+/dist
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor files
+*.swp
+*.swo
+*.log
+.vscode/
+.idea/
+*.iml
+
+# OS-generated files
+.DS_Store
+Thumbs.db
