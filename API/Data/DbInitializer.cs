@@ -210,6 +210,14 @@ namespace API.Data
                     QuantityInStock = 100
                 },
             };
+
+            //Adding products to db
+          foreach (var product in products)
+            {
+                context.Products.Add(product);
+            }
+
+            context.SaveChanges();
 		}
 	
 	}
