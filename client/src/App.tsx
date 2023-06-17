@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 function App() {
@@ -6,6 +6,15 @@ function App() {
     {name: 'product1', price: 100.00},
     {name: 'product2', price: 200.00},
   ]);
+
+  //Adds side effect to component when it loads 
+  //Fetching products from api, extracting a json body 
+  //setting the json body as the value of the products variable
+  useEffect(() => {
+    fetch('http://localhost:5152/api/products')
+    .then(response => response.json())
+    .then(data => setProducts(data))
+  }, [])
 
   function addProduct(){
     setProducts(prevState => [...prevState, 
