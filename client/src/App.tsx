@@ -30,8 +30,8 @@ function App() {
     <div>
     <h1>Store</h1>
     <ul>
-    {products.map((item, index) =>(
-      <li key={index}>{item.name} - {item.price}</li>
+    {products.map(product =>(
+      <li key={product.id}>{product.name} - {product.price}</li>
     ))}
     </ul>
     <button onClick={addProduct}>Add Product</button>
