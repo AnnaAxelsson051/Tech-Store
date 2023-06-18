@@ -14,4 +14,4 @@ export default function Catalog({products, addProduct}: Props){
         <Button variant="contained" onClick={addProduct}>Add Product</Button>
         </>
     )
-        }
+    }

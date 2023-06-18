@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Product } from "../models/product";
 import Catalog from "../../features/catalog/Catalog";
-import {Typography} from "@mui/material";
+import {Container, CssBaseline} from "@mui/material";
 import Header from "./Header";
 
 function App() {
@@ -30,10 +30,11 @@ function App() {
 
   return (
     <>
+    <CssBaseline/> {/*Removes margins on navbar*/}
       <Header/>
-    <Typography variant="h1">Store</Typography>
+      <Container>
     <Catalog products={products} addProduct={addProduct}/>
-   
+    </Container>
     </>
   );
 }
