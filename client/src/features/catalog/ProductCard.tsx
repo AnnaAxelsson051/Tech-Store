@@ -9,14 +9,17 @@ export default function ProductCard({product}: Props){
         <Card>
             <CardHeader
             avatar={
-                <Avatar>
+                <Avatar sx={{bgcolor: 'secondary.main'}}>
 {product.name.charAt(0).toUpperCase()}
                 </Avatar>
             }
             title={product.name}
+            titleTypographyProps={{
+                sx: {fontWeight: 'bold', color: 'primary.main'}
+            }}
                 />
         <CardMedia
-          sx={{ height: 140, backgroundSize: 'contain' }}
+          sx={{ height: 140, backgroundSize: 'contain', bgcolor: 'primary.light' }}
           //image="/static/images/cards/contemplative-reptile.jpg"
           //image="http://picsum.photos/200"
           image={product.pictureUrl}
@@ -26,7 +29,7 @@ export default function ProductCard({product}: Props){
         <CardContent>
           <Typography gutterBottom color='secondary' variant="h5">
             {/*Lizard*/}
-            {product.price}
+            ${(product.price / 100).toFixed(2)}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {product.brand} / {product.type}
