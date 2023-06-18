@@ -21,7 +21,7 @@ export default function Catalog({products, addProduct}: Props){
          </ListItem>
         ))}
         </List>
-        <Button onClick={addProduct}>Add Product</Button>
+        <Button variant="contained" onClick={addProduct}>Add Product</Button>
         </List>
     )
         }
