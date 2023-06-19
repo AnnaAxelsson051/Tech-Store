@@ -9,7 +9,10 @@ function App() {
   const paletteType = darkMode ? 'dark' : 'light';
  const theme = createTheme({
   palette:{
-    mode: paletteType
+    mode: paletteType,
+    background: {
+       default: paletteType === 'light' ? '#f9f6f6' : '#121212'
+}
   }
  })
 
