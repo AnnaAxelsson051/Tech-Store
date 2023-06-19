@@ -20,3 +20,4 @@ API
 - React
 - TypeScript
 - SQLite
+- Material UI
