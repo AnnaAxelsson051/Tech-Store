@@ -5,8 +5,8 @@ export default function Header(){
         <AppBar position='static' sx={{mb: 4}}>
 <Toolbar>
     <Typography variant='h6'>
-        Store
-    </Typography>
+        <h1>TECH STORE</h1>
+       </Typography>
 </Toolbar>
         </AppBar>
     )
