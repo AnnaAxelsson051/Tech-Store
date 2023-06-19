@@ -18,9 +18,12 @@ useEffect(() => {
          .finally(() => setLoading(false));
         }, [id])
 
+        if(loading) return <h3>Loading...</h3>
+        if(!product) return <h3>Product not found</h3>
+
     return(
         <Typography variant="h2">
-            Product details
+            {product.name}
         </Typography>
     )
 }
