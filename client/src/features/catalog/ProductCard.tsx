@@ -1,4 +1,4 @@
-import { ListItem, ListItemAvatar, Avatar, ListItemText, Button, Card, CardActions, CardContent, CardMedia, Typography, CardHeader } from "@mui/material";
+import { ListItem, ListItemAvatar, Avatar, ListItemText, Button, Card, CardActions, CardContent, CardMedia, Typography, CardHeader, Link } from "@mui/material";
 import { Product } from "../../app/models/product";
 
 interface Props {
@@ -40,8 +40,8 @@ export default function ProductCard({product}: Props){
         </CardContent>
         <CardActions>
        
-          <Button variant="contained" size="small">View details</Button>
-          <Button variant="contained" size="small">Add to cart</Button>
+          <Button size="small">Add to cart</Button>
+          <Button component={Link} to={`/catalog/${product.id}`} size="small">View</Button>
         </CardActions>
       </Card>
 
