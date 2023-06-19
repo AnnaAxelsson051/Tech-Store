@@ -23,7 +23,6 @@ function App() {
  }
 
   return (
-    <>
     <ThemeProvider theme={theme}>
     <CssBaseline/> {/*Removes margins on navbar*/}
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
@@ -31,7 +30,6 @@ function App() {
    <Outlet/>
     </Container>
     </ThemeProvider>
-    </>
   );
 }
 
