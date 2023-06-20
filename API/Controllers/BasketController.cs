@@ -26,13 +26,22 @@ namespace API.Controllers
            return basket;
            }
 
+        //Checks if there is already a basket and retrieves it
+        //Otherwise creates a basket, looks for product by id and adds it
+        //Saves changes and ensures so changes were made
            [HttpPost]
            public async Task <ActionResult> AddItemToBasket(int productId, int quantity)
            {
             var basket = await RetrieveBasket();
             if (basket == null) basket = CreateBasket();
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null) return NotFound();
+            basket.AddItem(product, quantity)
+            
+            var result = await _context.SaveChangesAsync() > 0;
+            return (result) (201);
 
-            return StatusCode(201);
+            return BadRequest(new ProblemDetails{Title = 'Error while saving item to basket'});
            }
 
 
