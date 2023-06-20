@@ -21,36 +21,23 @@ namespace API.Controllers
 
            //Getting basket with items and info about the products
            // (with cookies)
-           [HttpGet]
+           [HttpGet(Name = "GetBasket")]
            public async Task<ActionResult<BasketDto>> GetBasket()
-           {
-            
-           var basket = await RetrieveBasket();
-           
-           if (basket == null) return NotFound();
+        {
 
-            return new BasketDto
-            {
-                Id = basket.Id,
-                BuyerId = basket.BuyerId,
-                Items = basket.Items.Select(item => new BasketItemDto
-                {
-                    ProductId = item.ProductId,
-                    Name = item.Product.Name,
-                    Price = item.Product.Price,
-                    PictureUrl = item.Product.PictureUrl,
-                    Type = item.Product.Type,
-                    Brand = item.Product.Brand,
-                    Quantity = item.Quantity,
-                }).ToList()
-            };
-           }
+            var basket = await RetrieveBasket();
+
+            if (basket == null) return NotFound();
+
+            return MapBasketToDto(basket);
+        }
+
 
         //Checks if there is already a basket and retrieves it
         //Otherwise creates a basket, looks for product by id and adds it
         //Saves changes and ensures so changes were made
-           [HttpPost]
-           public async Task <ActionResult> AddItemToBasket(int productId, int quantity)
+        [HttpPost]
+           public async Task <ActionResult<BasketDto>> AddItemToBasket(int productId, int quantity)
            {
             var basket = await RetrieveBasket();
             if (basket == null) basket = CreateBasket();
@@ -59,9 +46,9 @@ namespace API.Controllers
             basket.AddItem(product, quantity)
             
             var result = await _context.SaveChangesAsync() > 0;
-            return (result) (201);
+            if (result) return CreatedAtRoute("GetBasket", MapBasketToDto(basket));
 
-            return BadRequest(new ProblemDetails{Title = 'Error while saving item to basket'});
+            return BadRequest(new ProblemDetails{Title = "Error while saving item to basket" });
            }
 
 
@@ -97,5 +84,24 @@ namespace API.Controllers
           _context.Baskets.Add(basket);
           return basket;
           }
+
+        private BasketDto MapBasketToDto(BasketController basket)
+        {
+            return new BasketDto
+            {
+                Id = basket.Id,
+                BuyerId = basket.BuyerId,
+                Items = basket.Items.Select(item => new BasketItemDto
+                {
+                    ProductId = item.ProductId,
+                    Name = item.Product.Name,
+                    Price = item.Product.Price,
+                    PictureUrl = item.Product.PictureUrl,
+                    Type = item.Product.Type,
+                    Brand = item.Product.Brand,
+                    Quantity = item.Quantity,
+                }).ToList()
+            };
+        }
     }
 }
