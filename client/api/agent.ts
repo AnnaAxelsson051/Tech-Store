@@ -1,4 +1,8 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
+import { toast } from "react-toastify";
+import { history } from "../..";
+
+const sleep = () => new Promise(resolve => setTimeout(resolve, 1000));
 
 axios.defaults.baseURL = 'http://localhost:5152/api/';
 
@@ -6,14 +10,16 @@ axios.defaults.baseURL = 'http://localhost:5152/api/';
 const responseBody = (response: AxiosResponse) => response.data;
 
 
-axios.interceptors.response.use(response => {
+axios.interceptors.response.use(async response => {
+    await sleep();
     return response
 }, (error: AxiosError) => {
     const { data, status } = error.response;
     switch (status) {
+        case 400:
         if (data.errors){
             const modelStateErrors:string[] = [];
-            for (konst key in data.errors){
+            for (const key in data.errors){
                 if(data.errors[key]){
                 modelStateErrors.push(data.errors[key])
             }
@@ -21,7 +27,6 @@ axios.interceptors.response.use(response => {
             //flatten array so one only gets back the two strings
             throw modelStateErrors.flat();
         }
-        case 400:
             toast.error(data.title);
             break;
         case 401:
