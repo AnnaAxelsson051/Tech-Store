@@ -9,16 +9,26 @@ const responseBody = (response: AxiosResponse) => response.data;
 axios.interceptors.response.use(response => {
     return response
 }, (error: AxiosError) => {
-    const { data, status } = error.response as AxiosResponse;
+    const { data, status } = error.response;
     switch (status) {
+        if (data.errors){
+            const modelStateErrors:string[] = [];
+            for (konst key in data.errors){
+                if(data.errors[key]){
+                modelStateErrors.push(data.errors[key])
+            }
+            }
+            //flatten array so one only gets back the two strings
+            throw modelStateErrors.flat();
+        }
         case 400:
-            TransformStream.error(data.title);
+            toast.error(data.title);
             break;
         case 401:
-            TransformStream.error(data.title);
+            toast.error(data.title);
             break;
         case 500:
-            TransformStream.error(data.title);
+            toast.error(data.title);
             break;
         default:
             break;
