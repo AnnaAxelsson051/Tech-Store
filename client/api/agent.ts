@@ -5,6 +5,7 @@ import { history } from "../..";
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
 
 axios.defaults.baseURL = 'http://localhost:5152/api/';
+StorageEvent.defaults.withCredentials = true;
 
 //Getting data response storing it
 const responseBody = (response: AxiosResponse) => response.data;
