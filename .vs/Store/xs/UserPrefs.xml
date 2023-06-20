@@ -1,42 +1,38 @@
 ﻿<Properties StartupConfiguration="{1E4F34D6-57DC-44B7-BA00-FDA0EDEB0B2E}|http">
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/appsettings.Development.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Program.cs">
     <Files>
-      <File FileName="API/Data/StoreContext.cs" Line="10" Column="39" />
-      <File FileName="API/Program.cs" Line="31" Column="4" />
+      <File FileName="API/Data/StoreContext.cs" Line="10" Column="10" />
+      <File FileName="API/Program.cs" Line="30" Column="1" />
       <File FileName="API/appsettings.Development.json" Line="9" Column="47" />
-      <File FileName="API/Data/Migrations/20230616165151_InitialCreate.cs" Line="1" Column="1" />
-      <File FileName="API/Data/Migrations/20230616165151_InitialCreate.Designer.cs" Line="1" Column="1" />
-      <File FileName="API/Data/DbInitializer.cs" Line="220" Column="35" />
-      <File FileName="API/Controllers/ProductsController.cs" Line="34" Column="18" />
-      <File FileName="API/appsettings.json" Line="1" Column="1" />
+      <File FileName="API/Data/Migrations/20230616165151_InitialCreate.cs" />
+      <File FileName="API/Data/Migrations/20230616165151_InitialCreate.Designer.cs" />
+      <File FileName="API/Data/DbInitializer.cs" />
+      <File FileName="API/Controllers/ProductsController.cs" Line="32" Column="27" />
+      <File FileName="API/appsettings.json" />
+      <File FileName="API/Controllers/BasketController.cs" Line="51" Column="92" />
+      <File FileName="API/Controllers/BuggyController.cs" Line="12" Column="27" />
+      <File FileName="API/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/BaseApiController.cs" Line="1" Column="1" />
+      <File FileName="API/DTOs/BasketDto.cs" Line="1" Column="1" />
+      <File FileName="API/DTOs/BasketItemDto.cs" Line="1" Column="1" />
+      <File FileName="API/Entities/Basket.cs" Line="1" Column="1" />
+      <File FileName="API/Entities/BasketItem.cs" Line="1" Column="1" />
+      <File FileName="API/Entities/Product.cs" Line="1" Column="1" />
+      <File FileName="API/MiddleWare/ExceptionMiddleware.cs" Line="41" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Store" expanded="True">
-            <Node name="API" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-              <Node name="Controllers" expanded="True" />
-              <Node name="Data" expanded="True">
-                <Node name="Migrations" expanded="True">
-                  <Node name="20230616165151_InitialCreate.cs" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="Entities" expanded="True" />
-              <Node name="appsettings.json" expanded="True" />
-            </Node>
-          </Node>
+          <Node name="Store" expanded="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.API PreferredExecutionTarget="/Applications/Safari.app" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.API PreferredExecutionTarget="/Applications/Safari.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
