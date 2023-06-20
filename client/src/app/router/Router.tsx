@@ -5,6 +5,7 @@ import { ContactPage } from "@mui/icons-material";
 import AboutPage from "../../features/about/AboutPage";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
+import ServerError from "../errors/ServerError";
 
 export const router = createBrowserRouter([
     {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
             {path: 'catalog/:id', element: <ProductDetails/>},
             {path: 'about', element: <AboutPage/>},
             {path: 'contact', element: <ContactPage/>},
+            {path: 'server-error', element: <ServerError/>},
         ]
     }
 ])
