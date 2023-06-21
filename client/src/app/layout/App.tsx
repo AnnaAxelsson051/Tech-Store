@@ -15,8 +15,9 @@ function App() {
   const {setBasket} = useStoreContext();
   const [loading, setLoading] = useState(true);
 
-  //Getting basket based on cookie, getting basket from api
-  //catching error, turning of loading
+  //Getting basket based on cookie
+  //getting basket from api
+  //catching error, turn of loading
   useEffect(() => {
     const buyerId = getCookie('buyerId');
     if (buyerId){
@@ -24,6 +25,8 @@ function App() {
       .then(basket => setBasket(basket))
       .catch(error => console.log(error))
       .finally(() => setLoading(false));
+    }else{
+      setLoading(false);
     }
   }, [setBasket])
 
