@@ -41,7 +41,6 @@ function removeItem(productId: number, quantity: number){
     }
 }
 
-
 return(
     <StoreContext.Provider value={{basket, setBasket, removeItem}}>
         {children}
