@@ -29,7 +29,7 @@ export default function ProductDetails() {
     }, [id, item])
 
     function handleInputChange(event: any){
-        if(event.target.value > 0){
+        if(event.target.value >= 0){
         setQuantity(parseInt(event.target.value));
         }
     }
@@ -45,7 +45,9 @@ export default function ProductDetails() {
          }else{
             const updatedQuantity = item.quantity - quantity;
             agent.Basket.removeItem(product?.id!, updatedQuantity)
-            .then
+            .then(() => removeItem(product?.id!, updatedQuantity))
+            .catch(error => console.log(error))
+            .finally(() => setSubmitting(false));
          }
     }
 
@@ -100,6 +102,9 @@ export default function ProductDetails() {
                 </Grid>
                 <Grid item xs={6}>
                 <LoadingButton
+                disabled={item?.quantity === quantity || !item && quantity === 0}
+                loading={submitting}
+                onClick={handleUpdateCart}
                 sx={{height: '55px'}}
                 color='primary'
                 size='large'
