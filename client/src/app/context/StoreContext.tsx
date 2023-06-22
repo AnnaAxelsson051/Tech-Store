@@ -15,6 +15,7 @@ export const StoreContext = createContext<StoreContextValue | undefined>(undefin
 //store context hook to consume store provider
 export function useStoreContext() {
     const context = useContext(StoreContext);
+    
     if (context === undefined){
         throw Error('Oops - we do not seem to be inside the provider');
     }
