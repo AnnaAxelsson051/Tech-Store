@@ -2,12 +2,11 @@ import { Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, T
 import { LoadingButton } from "@mui/lab";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Product } from "../../app/models/product";
-import agent from "../../app/api/agent";
 import NotFound from "../../app/errors/NotFound";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { addBasketItemAsync, removeBasketItemAsync} from "../basket/BasketSlice";
+import { fetchProductAsync, productSelectors } from "./catalogSlice";
 
 //displays and manages the details of a specific product
 
@@ -17,19 +16,16 @@ export default function ProductDetails() {
     const {basket, status} = useAppSelector(state => state.basket);
     const dispatch = useAppDispatch();
     const { id } = useParams<{ id: string }>();
-    const [product, setProduct] = useState<Product | null>(null);
-    const [loading, setLoading] = useState(true);
+    const product = useAppSelector(state => productSelectors.selectById(state, id));
+    const {status: productStatus} = useAppSelector(state => state.catalog);
     const [quantity, setQuantity] = useState(0);
     const item = basket?.items.find(i => i.productId === product?.id);
 
     //Getting the specific product
     useEffect(() => {
         if (item) setQuantity(item.quantity);
-        agent.Catalog.details(parseInt(id))
-            .then(response => setProduct(response))
-            .catch(error => console.log(error))
-            .finally(() => setLoading(false));
-    }, [id, item])
+        if (!product && id) dispatch(fetchProductAsync(parseInt(id)));
+    }, [id, item, dispatch, product])
 
     // handling input change events and updating the quantity
     function handleInputChange(event: any){
@@ -50,7 +46,7 @@ export default function ProductDetails() {
          }
     }
 
-    if (loading) return <LoadingComponent message='Loading product...'/>
+    if (productStatus.includes('pending')) return <LoadingComponent message='Loading product...'/>
     if (!product) return <NotFound/>
 
     return (
