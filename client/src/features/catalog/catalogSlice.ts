@@ -4,7 +4,7 @@ import agent from "../../app/api/agent";
 
 const productsAdapter = createEntityAdapter <Product>();
 
-    export const fetchProductAsync = createAsyncThunk<Product[]>(
+    export const fetchProductsAsync = createAsyncThunk<Product[]>(
     'catalog/fetchProductsAsync',
     async () => {
         try {
@@ -23,8 +23,16 @@ export const catalogSlice = createSlice ({
     }),
     reducers: {},
     extraReducers: (builder => {
-        builder.addCase(fetchProductAsync.pending, (state) =>{
+        builder.addCase(fetchProductsAsync.pending, (state) =>{
             state.status = 'pendingFetchProducts';
+        })
+        builder.addCase(fetchProductsAsync.fulfilled, (state, action) => {
+            productsAdapter.setAll(state, action.payload);
+            state.status = 'idle';
+            state.productsLoaded = true;
+        });
+        builder.addCase(fetchProductsAsync.rejected, (state) => {
+            state.status = 'idle';
         })
     })
 })
