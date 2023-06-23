@@ -20,8 +20,6 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-store.dispatch(fetchProductsAsync());
-
 root.render(
   <React.StrictMode>
       <Provider store={store}>
