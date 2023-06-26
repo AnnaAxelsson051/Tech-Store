@@ -19,8 +19,10 @@
 
   <ItemGroup>
     <None Remove="Data\Migrations\" />
+    <None Remove="RequestHelpers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="RequestHelpers\" />
   </ItemGroup>
 </Project>
