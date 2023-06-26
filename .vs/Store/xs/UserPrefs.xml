@@ -1,38 +1,53 @@
 ﻿<Properties StartupConfiguration="{1E4F34D6-57DC-44B7-BA00-FDA0EDEB0B2E}|http">
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/ProductsController.cs">
     <Files>
-      <File FileName="API/Data/StoreContext.cs" Line="10" Column="10" />
+      <File FileName="API/Data/StoreContext.cs" />
       <File FileName="API/Program.cs" Line="30" Column="1" />
-      <File FileName="API/appsettings.Development.json" Line="9" Column="47" />
+      <File FileName="API/appsettings.Development.json" />
       <File FileName="API/Data/Migrations/20230616165151_InitialCreate.cs" />
       <File FileName="API/Data/Migrations/20230616165151_InitialCreate.Designer.cs" />
       <File FileName="API/Data/DbInitializer.cs" />
-      <File FileName="API/Controllers/ProductsController.cs" Line="32" Column="27" />
+      <File FileName="API/Controllers/ProductsController.cs" Line="45" Column="31" />
       <File FileName="API/appsettings.json" />
-      <File FileName="API/Controllers/BasketController.cs" Line="51" Column="92" />
-      <File FileName="API/Controllers/BuggyController.cs" Line="12" Column="27" />
-      <File FileName="API/Controllers/WeatherForecastController.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/BaseApiController.cs" Line="1" Column="1" />
-      <File FileName="API/DTOs/BasketDto.cs" Line="1" Column="1" />
-      <File FileName="API/DTOs/BasketItemDto.cs" Line="1" Column="1" />
-      <File FileName="API/Entities/Basket.cs" Line="1" Column="1" />
-      <File FileName="API/Entities/BasketItem.cs" Line="1" Column="1" />
-      <File FileName="API/Entities/Product.cs" Line="1" Column="1" />
-      <File FileName="API/MiddleWare/ExceptionMiddleware.cs" Line="41" Column="2" />
+      <File FileName="API/Controllers/BasketController.cs" />
+      <File FileName="API/Controllers/BuggyController.cs" />
+      <File FileName="API/Controllers/WeatherForecastController.cs" />
+      <File FileName="API/Controllers/BaseApiController.cs" />
+      <File FileName="API/DTOs/BasketDto.cs" />
+      <File FileName="API/DTOs/BasketItemDto.cs" />
+      <File FileName="API/Entities/Basket.cs" />
+      <File FileName="API/Entities/BasketItem.cs" />
+      <File FileName="API/Entities/Product.cs" />
+      <File FileName="API/MiddleWare/ExceptionMiddleware.cs" />
+      <File FileName="API/Extensions/ProductExtensions.cs" Line="34" Column="32" />
+      <File FileName="API/RequestHelpers/PaginationParams.cs" Line="3" Column="2" />
+      <File FileName="API/RequestHelpers/ProductParams.cs" Line="4" Column="47" />
+      <File FileName="API/RequestHelpers/MetaData.cs" Line="9" Column="30" />
+      <File FileName="API/RequestHelpers/PagedList.cs" Line="28" Column="62" />
+      <File FileName="API/Extensions/HttpExtensions.cs" Line="6" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Store" expanded="True" />
+          <Node name="Store" expanded="True">
+            <Node name="API" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="ProductsController.cs" selected="True" />
+              </Node>
+              <Node name="Data" expanded="True" />
+              <Node name="Extensions" expanded="True" />
+              <Node name="RequestHelpers" expanded="True" />
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.API PreferredExecutionTarget="/Applications/Safari.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.API PreferredExecutionTarget="/Applications/Safari.app" />
 </Properties>
