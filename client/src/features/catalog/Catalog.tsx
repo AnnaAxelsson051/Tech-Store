@@ -3,7 +3,8 @@ import ProductList from "./ProductList";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { fetchFilters, fetchProductsAsync, productSelectors } from "./catalogSlice";
-import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, Pagination, Paper, Radio, RadioGroup, TextField, Typography } from "@mui/material";
+import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, Grid, Pagination, Paper, Radio, RadioGroup, Typography } from "@mui/material";
+import ProductSearch from "./ProductSearch";
 
 const sortOptions = [
     { value: 'name', label: 'Alphabetical' },
@@ -30,33 +31,10 @@ export default function Catalog() {
 
     return (
         <>
-                       <Grid item xs={9}>
-                    <ProductList products={products} />
-                <Grid item xs={3}/>
-                <Grid item xs={9}>
-                    <Box display='flex' justifyContent='space-between' alignItems='center'>
-                        <Typography>
-                            Displaying 1-6 of 20 items 
-                        </Typography>
-                        <Pagination
-                        color='secondary'
-                        size='large'
-                        count={10}
-                        page={2}
-                        />
-                    </Box>
-                </Grid>
-            </Grid>
-
-            
             <Grid container spacing={4}>
                 <Grid item xs={3}>
                     <Paper sx={{ mb: 2 }}>
-                        <TextField
-                            label='Search products'
-                            variant="outlined"
-                            fullWidth
-                        />
+                        <ProductSearch/>
                     </Paper>
                     <Paper sx={{ mb: 2, p: 2 }}>
                         <FormControl component="fieldset">
@@ -87,7 +65,23 @@ export default function Catalog() {
                 </Grid>
 
 {/*Move this section above the other */}
-              
+<Grid item xs={9}>
+                    <ProductList products={products} />
+                <Grid item xs={3}/>
+                <Grid item xs={9}>
+                    <Box display='flex' justifyContent='space-between' alignItems='center'>
+                        <Typography>
+                            Displaying 1-6 of 20 items 
+                        </Typography>
+                        <Pagination
+                        color='secondary'
+                        size='large'
+                        count={10}
+                        page={2}
+                        />
+                    </Box>
+                </Grid>
+            </Grid>
  
         </>
     )
