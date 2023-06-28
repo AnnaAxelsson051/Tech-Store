@@ -3,6 +3,7 @@ using API.DTOs;
 using API.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace API.Controllers
 {
@@ -24,6 +25,25 @@ namespace API.Controllers
 
 			return user;
 					}
+
+		[HttpPost("Register")]
+		public async Task <ActionResult> Register(RegisterDto registerDto)
+		{
+			var user = new User { UserName = registerDto.UserName, Email = registerDto.Email };
+
+			var result = await _userManager.CreateAsync(user, registerDto.Password);
+
+			if(!result.Succeeded)
+			{
+				foreach (var error in result.Errors)
+				{
+					ModelState.AddModelError(error.Code, error.Description);
+				}
+				return ValidationProblemDetails();
+			}
+			await _userManager.AddToRoleAsync(user, "Member");
+			return StatusCode(201);
+		}
 	}
 }
 
