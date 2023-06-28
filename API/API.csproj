@@ -22,9 +22,11 @@
   <ItemGroup>
     <None Remove="Data\Migrations\" />
     <None Remove="RequestHelpers\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="RequestHelpers\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
