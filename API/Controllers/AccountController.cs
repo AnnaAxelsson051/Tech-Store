@@ -1,6 +1,8 @@
 ﻿using System;
+using API.DTOs;
 using API.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
@@ -12,6 +14,16 @@ namespace API.Controllers
 		{
 		_userManager = userManager;
 		}
+
+		[HttpPost("login")]
+		public async Task <ActionResult<User>> Login(LoginDto loginDto)
+		{
+			var user = await _userManager.FindByNameAsync(loginDto.UserName);
+			if (user == null || !await _userManager.CheckPasswordAsync(user, loginDto.Password))
+				return Unauthorized();
+
+			return user;
+					}
 	}
 }
 
