@@ -7,26 +7,28 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
+import agent from '../../app/api/agent';
 
-
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+const [values, setValues] = React.useState({
+    username:'',
+    password:''
+})
+
+  const handleSubmit = (event: any) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+ agent.Account.login(values);
   };
 
+  function handleInputChange(event: any){
+    const {name, value} = event.target;
+    setValues({...values, [name]: value});
+  }
+
   return (
-<ThemeProvider theme={defaultTheme}>
       <Container component={Paper} maxWidth="sm" 
       sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p:4 }}>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -38,23 +40,21 @@ export default function Login() {
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
-              required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              label="Username"
+              name="username"
               autoFocus
+              onChange={handleInputChange}
+              value={values.username}
             />
             <TextField
               margin="normal"
-              required
               fullWidth
               name="password"
               label="Password"
               type="password"
-              id="password"
-              autoComplete="current-password"
+              onChange={handleInputChange}
+              value={values.password}
             />
             <Button
               type="submit"
@@ -73,6 +73,5 @@ export default function Login() {
             </Grid>
           </Box>
       </Container>
-    </ThemeProvider>
   );
 }
