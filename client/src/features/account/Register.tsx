@@ -5,13 +5,15 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { LoadingButton } from '@mui/lab';
 import agent from '../../app/api/agent';
 import { Paper } from '@mui/material';
+import { toast } from 'react-toastify';
 
 export default function Register() {
+    const navigate = useNavigate();
     const { register, handleSubmit, setError, formState: { isSubmitting, errors, isValid } } = useForm({
         mode: 'onTouched'
     });
@@ -41,6 +43,10 @@ export default function Register() {
             </Typography>
             <Box component="form"
                 onSubmit={handleSubmit(data => agent.Account.register(data)
+                    .then(() => {
+                        toast.success('Registration successful - you can now login');
+                        navigate('/login');
+                    })
                     .catch(error => handleApiErrors(error)))}
                 noValidate sx={{ mt: 1 }}>
                 <TextField
@@ -59,7 +65,7 @@ export default function Register() {
                     {...register('email', { 
                         required: 'Email is required',
                     pattern: {
-                        value:/^\w+[w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/,
+                        value:/^\w+[w-.]*@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/,
                         message: 'Not a vaid email address'
                     } 
                 })}
@@ -73,7 +79,9 @@ export default function Register() {
                     type="password"
                     {...register('password', { 
                         required: 'Password is required',
-                    pattern: /(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/
+                    pattern: {
+                        value: /(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/,
+                        message: 'Password does not meet complexity requirements'
                 })}
                     error={!!errors.password}
                     helperText={errors?.password?.message as string}
