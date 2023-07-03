@@ -5,17 +5,17 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/AccountController.cs">
     <Files>
-      <File FileName="API/Data/StoreContext.cs" Line="27" Column="10" />
+      <File FileName="API/Data/StoreContext.cs" />
       <File FileName="API/Program.cs" Line="81" Column="2" />
-      <File FileName="API/appsettings.Development.json" Line="14" Column="2" />
+      <File FileName="API/appsettings.Development.json" />
       <File FileName="API/Data/Migrations/20230616165151_InitialCreate.cs" />
       <File FileName="API/Data/Migrations/20230616165151_InitialCreate.Designer.cs" />
-      <File FileName="API/Data/DbInitializer.cs" Line="29" Column="82" />
-      <File FileName="API/Controllers/ProductsController.cs" Line="45" Column="31" />
+      <File FileName="API/Data/DbInitializer.cs" />
+      <File FileName="API/Controllers/ProductsController.cs" />
       <File FileName="API/appsettings.json" />
-      <File FileName="API/Controllers/BasketController.cs" />
+      <File FileName="API/Controllers/BasketController.cs" Line="49" Column="83" />
       <File FileName="API/Controllers/BuggyController.cs" />
       <File FileName="API/Controllers/WeatherForecastController.cs" />
       <File FileName="API/Controllers/BaseApiController.cs" />
@@ -31,12 +31,13 @@
       <File FileName="API/RequestHelpers/MetaData.cs" />
       <File FileName="API/RequestHelpers/PagedList.cs" />
       <File FileName="API/Extensions/HttpExtensions.cs" />
-      <File FileName="API/Entities/User.cs" Line="2" Column="37" />
-      <File FileName="API/Controllers/AccountController.cs" Line="55" Column="5" />
-      <File FileName="API/DTOs/LoginDto.cs" Line="7" Column="25" />
-      <File FileName="API/DTOs/RegisterDto.cs" Line="10" Column="1" />
-      <File FileName="API/Services/TokenService.cs" Line="43" Column="20" />
-      <File FileName="API/DTOs/UserDto.cs" Line="7" Column="4" />
+      <File FileName="API/Entities/User.cs" />
+      <File FileName="API/Controllers/AccountController.cs" Line="51" Column="104" />
+      <File FileName="API/DTOs/LoginDto.cs" />
+      <File FileName="API/DTOs/RegisterDto.cs" />
+      <File FileName="API/Services/TokenService.cs" />
+      <File FileName="API/DTOs/UserDto.cs" Line="8" Column="26" />
+      <File FileName="API/Extensions/BasketExtensions.cs" Line="6" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -51,7 +52,6 @@
               <Node name="RequestHelpers" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
-              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
