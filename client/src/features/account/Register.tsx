@@ -12,9 +12,23 @@ import agent from '../../app/api/agent';
 import { Paper } from '@mui/material';
 
 export default function Register() {
-    const { register, handleSubmit, formState: { isSubmitting, errors, isValid } } = useForm({
+    const { register, handleSubmit, setError, formState: { isSubmitting, errors, isValid } } = useForm({
         mode: 'onTouched'
     });
+
+    function handleApiErrors(errors:any){
+        if (errors){
+            errors.forEach((error: string) => {
+                if (error.includes('Password')){
+                    setError('password', {message: error})
+                } else if (error.includes('Email')){
+                     setError('email', {message: error})
+                } else if (error.includes('Username')){
+                    setError('username', {message: error})
+                }
+            });
+        }
+    }
 
     return (
         <Container component={Paper} maxWidth="sm"
@@ -27,31 +41,40 @@ export default function Register() {
             </Typography>
             <Box component="form"
                 onSubmit={handleSubmit(data => agent.Account.register(data)
-                    .catch(error => setValidationErrors(error)))}
+                    .catch(error => handleApiErrors(error)))}
                 noValidate sx={{ mt: 1 }}>
                 <TextField
                     margin="normal"
                     fullWidth
                     label="Username"
+                    {...register('username', { required: 'Username is required' })}
+                    error={!!errors.userName}
+                    helperText={errors?.username?.message as string}
+                />
+                  <TextField
+                    margin="normal"
+                    fullWidth
+                    label="Email address"
                     autoFocus
-                    {...register('email', { required: 'Email is required' })}
+                    {...register('email', { 
+                        required: 'Email is required',
+                    pattern: {
+                        value:/^\w+[w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/,
+                        message: 'Not a vaid email address'
+                    } 
+                })}
                     error={!!errors.email}
                     helperText={errors?.email?.message as string}
                 />
                 <TextField
                     margin="normal"
                     fullWidth
-                    label="Email"
-                    {...register('username', { required: 'Username is required' })}
-                    error={!!errors.userName}
-                    helperText={errors?.username?.message as string}
-                />
-                <TextField
-                    margin="normal"
-                    fullWidth
                     label="Password"
                     type="password"
-                    {...register('password', { required: 'Password is required' })}
+                    {...register('password', { 
+                        required: 'Password is required',
+                    pattern: /(?=^.{6,10}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\s).*$/
+                })}
                     error={!!errors.password}
                     helperText={errors?.password?.message as string}
                 />
