@@ -23,10 +23,12 @@
     <None Remove="Data\Migrations\" />
     <None Remove="RequestHelpers\" />
     <None Remove="Services\" />
+    <None Remove="Entities\OrderAggregate\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="RequestHelpers\" />
     <Folder Include="Services\" />
+    <Folder Include="Entities\OrderAggregate\" />
   </ItemGroup>
 </Project>

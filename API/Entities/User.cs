@@ -4,9 +4,7 @@ namespace API.Entities
 {
 	public class User : IdentityUser 
 	{
-		public User()
-		{
-		}
+	
 	}
 }
 
