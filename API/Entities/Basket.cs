@@ -9,10 +9,14 @@ namespace API.Entities
         public string BuyerId { get; set; }
         public List<BasketItem> Items { get; set; } = new();
         //Creating a new list of items when creating a new basket
-    
-    //Checking if the item is already in basket, if not adding item to list
-     //If item already in basket adjusting its quantity
-    public void AddItem(Product product, int quantity)
+
+        public string PaymentIntentId { get; set; }
+
+        public string ClientSecret { get; set; }
+
+        //Checking if the item is already in basket, if not adding item to list
+        //If item already in basket adjusting its quantity
+        public void AddItem(Product product, int quantity)
     {
         if (Items.All(item => item.ProductId != product.Id))
         {
