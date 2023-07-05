@@ -3,6 +3,7 @@ import { useState } from "react";
 import AddressForm from "./AddressForm";
 import PaymentForm from "./PaymentForm";
 import Review from "./Review";
+import { FieldValues, FormProvider, useForm } from "react-hook-form";
 
 const steps = ['Shipping address', 'Review your order', 'Payment details'];
 
@@ -20,9 +21,13 @@ function getStepContent(step: number) {
 }
 
 export default function CheckoutPage() {
+    const methods = useForm();
     const [activeStep, setActiveStep] = useState(0);
 
-    const handleNext = () => {
+    const handleNext = (data: FieldValues) => {
+        if (activeStep  === 0){
+            console.log(data);
+        }      
         setActiveStep(activeStep + 1);
     };
 
@@ -31,7 +36,7 @@ export default function CheckoutPage() {
     };
 
     return (
-
+<FormProvider {...methods} >
         <Paper variant="outlined" sx={{my: {xs: 3, md: 6}, p: {xs: 2, md: 3}}}>
             <Typography component="h1" variant="h4" align="center">
                 Checkout
@@ -56,7 +61,7 @@ export default function CheckoutPage() {
                         </Typography>
                     </>
                 ) : (
-                    <>
+                    <form onSubmit={methods.handleSubmit(handleNext)}>
                         {getStepContent(activeStep)}
                         <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
                             {activeStep !== 0 && (
@@ -66,15 +71,16 @@ export default function CheckoutPage() {
                             )}
                             <Button
                                 variant="contained"
-                                onClick={handleNext}
+                                type='submit'
                                 sx={{mt: 3, ml: 1}}
                             >
                                 {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                             </Button>
                         </Box>
-                    </>
+                    </form>
                 )}
             </>
         </Paper>
+        </FormProvider>
     );
 }
