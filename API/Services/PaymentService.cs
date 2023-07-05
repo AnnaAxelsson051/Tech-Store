@@ -32,8 +32,7 @@ namespace API.Services
 					PaymentMethodTypes = new List<string> { "card" }
 				};
 				intent = await service.CreateAsync(options);
-				basket.PaymentIntentId = intent.Id;
-				basket.ClientSecret = intent.ClientSecret;
+				
 			}
 			else
 			{
@@ -46,6 +45,11 @@ namespace API.Services
 
 			return intent;
 	    }
+
+        internal Task CreateOrUpdatePaymentIntent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
