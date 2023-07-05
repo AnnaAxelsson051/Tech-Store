@@ -5,21 +5,21 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Extensions/OrderExtensions.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/AccountController.cs">
     <Files>
-      <File FileName="API/Data/StoreContext.cs" Line="32" Column="36" />
-      <File FileName="API/Program.cs" Line="55" Column="19" />
+      <File FileName="API/Data/StoreContext.cs" />
+      <File FileName="API/Program.cs" />
       <File FileName="API/appsettings.Development.json" />
       <File FileName="API/Data/Migrations/20230616165151_InitialCreate.cs" />
       <File FileName="API/Data/Migrations/20230616165151_InitialCreate.Designer.cs" />
       <File FileName="API/Data/DbInitializer.cs" />
       <File FileName="API/Controllers/ProductsController.cs" />
-      <File FileName="API/appsettings.json" Line="1" Column="1" />
+      <File FileName="API/appsettings.json" />
       <File FileName="API/Controllers/BasketController.cs" />
       <File FileName="API/Controllers/BuggyController.cs" />
       <File FileName="API/Controllers/WeatherForecastController.cs" />
       <File FileName="API/Controllers/BaseApiController.cs" />
-      <File FileName="API/DTOs/BasketDto.cs" Line="1" Column="1" />
+      <File FileName="API/DTOs/BasketDto.cs" />
       <File FileName="API/DTOs/BasketItemDto.cs" />
       <File FileName="API/Entities/Basket.cs" />
       <File FileName="API/Entities/BasketItem.cs" />
@@ -31,25 +31,25 @@
       <File FileName="API/RequestHelpers/MetaData.cs" />
       <File FileName="API/RequestHelpers/PagedList.cs" />
       <File FileName="API/Extensions/HttpExtensions.cs" />
-      <File FileName="API/Entities/User.cs" Line="8" Column="29" />
-      <File FileName="API/Controllers/AccountController.cs" Line="91" Column="4" />
+      <File FileName="API/Entities/User.cs" />
+      <File FileName="API/Controllers/AccountController.cs" Line="98" Column="30" />
       <File FileName="API/DTOs/LoginDto.cs" />
       <File FileName="API/DTOs/RegisterDto.cs" />
       <File FileName="API/Services/TokenService.cs" />
       <File FileName="API/DTOs/UserDto.cs" />
-      <File FileName="API/Extensions/BasketExtensions.cs" Line="35" Column="1" />
-      <File FileName="API/Entities/Address.cs" Line="15" Column="1" />
-      <File FileName="API/Entities/OrderAggregate/ShippingAddress.cs" Line="11" Column="2" />
-      <File FileName="API/Entities/OrderAggregate/ProductItemOrdered.cs" Line="11" Column="22" />
-      <File FileName="API/Entities/OrderAggregate/OrderStatus.cs" Line="13" Column="1" />
-      <File FileName="API/Entities/OrderAggregate/OrderItem.cs" Line="10" Column="28" />
-      <File FileName="API/Entities/OrderAggregate/Order.cs" Line="13" Column="64" />
-      <File FileName="API/Entities/UserAddress.cs" Line="6" Column="12" />
-      <File FileName="API/Entities/Role.cs" Line="6" Column="39" />
-      <File FileName="API/Controllers/OrdersController.cs" Line="35" Column="42" />
-      <File FileName="API/DTOs/CreateOrderDto.cs" Line="13" Column="1" />
-      <File FileName="API/DTOs/OrderDto.cs" Line="16" Column="21" />
-      <File FileName="API/DTOs/OrderItemDto.cs" Line="14" Column="1" />
+      <File FileName="API/Extensions/BasketExtensions.cs" />
+      <File FileName="API/Entities/Address.cs" />
+      <File FileName="API/Entities/OrderAggregate/ShippingAddress.cs" />
+      <File FileName="API/Entities/OrderAggregate/ProductItemOrdered.cs" />
+      <File FileName="API/Entities/OrderAggregate/OrderStatus.cs" />
+      <File FileName="API/Entities/OrderAggregate/OrderItem.cs" />
+      <File FileName="API/Entities/OrderAggregate/Order.cs" />
+      <File FileName="API/Entities/UserAddress.cs" />
+      <File FileName="API/Entities/Role.cs" />
+      <File FileName="API/Controllers/OrdersController.cs" />
+      <File FileName="API/DTOs/CreateOrderDto.cs" />
+      <File FileName="API/DTOs/OrderDto.cs" />
+      <File FileName="API/DTOs/OrderItemDto.cs" />
       <File FileName="API/Extensions/OrderExtensions.cs" Line="32" Column="23" />
     </Files>
     <Pads>
@@ -57,7 +57,9 @@
         <State name="__root__">
           <Node name="Store" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="AccountController.cs" selected="True" />
+              </Node>
               <Node name="Data" expanded="True" />
               <Node name="DTOs" expanded="True" />
               <Node name="Entities" expanded="True">
@@ -67,7 +69,6 @@
               <Node name="RequestHelpers" expanded="True" />
               <Node name="Services" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
-              <Node name="WeatherForecast.cs" selected="True" />
             </Node>
           </Node>
         </State>
