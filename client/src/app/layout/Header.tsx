@@ -3,7 +3,8 @@ import { AppBar, Badge, Box, IconButton, List, ListItem, Switch, Toolbar, Typogr
 import { Link, NavLink } from "react-router-dom";
 import { useStoreContext } from "../context/StoreContext";
 import { useAppSelector } from "../store/configureStore";
-import SignedInMenu from "./SignedInMenu";
+import SignedInMenu from "./SignedinMenu";
+
 
 const midLinks = [
     { title: 'catalog', path: '/catalog' },
@@ -63,6 +64,14 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
                             {title.toUpperCase()}
                         </ListItem>
                     ))}
+                    {user &&
+                    <ListItem
+                            component={NavLink}
+                            to={'/inventory'}
+                            sx={navStyles}
+                        >
+                            INVENTORY
+                        </ListItem>}
                 </List>
 
                <Box display='flex' alignItems='center'>

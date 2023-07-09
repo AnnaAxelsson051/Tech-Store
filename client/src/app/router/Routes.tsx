@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import App from "../layout/App";
 import HomePage from "../../features/home/HomePage";
-import { ContactPage, Login } from "@mui/icons-material";
+import { ContactPage, Inventory, Login } from "@mui/icons-material";
 import AboutPage from "../../features/about/AboutPage";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
@@ -22,6 +22,7 @@ export const router = createBrowserRouter([
             {element: <RequireAuth />, children: [
                 {path: 'checkout', element: <CheckoutWrapper/>},
                 {path: 'orders', element: <Orders/>},
+                {path: 'inventory', element: <Inventory/>},
             ]},
             {path: '', element: <HomePage/>},
             {path: 'catalog', element: <Catalog/>},
