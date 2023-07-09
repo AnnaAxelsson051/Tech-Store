@@ -4,6 +4,9 @@ import agent from "../../app/api/agent";
 import { RootState } from "../../app/store/configureStore";
 import { MetaData } from "../../app/models/pagination";
 
+//Getting products from API
+
+
 interface CatalogState {
     productsLoaded: boolean;
     filtersLoaded: boolean;
@@ -100,6 +103,9 @@ export const catalogSlice = createSlice({
         },
         resetProductParams: (state) => {
             state.productParams = initParams();
+        },
+        setProduct: (state, action) => {
+            productsAdapter.upsertOne(state, action.payload);
         }
     },
     extraReducers: (builder => {
@@ -143,4 +149,4 @@ export const catalogSlice = createSlice({
 })
 export const productSelectors = productsAdapter.getSelectors((state: RootState) => state.catalog);
 
-export const {setProductParams, resetProductParams, setMetaData, setPageNumber} = catalogSlice.actions;
+export const {setProductParams, resetProductParams, setMetaData, setPageNumber, setProduct} = catalogSlice.actions;
