@@ -6,13 +6,12 @@ import { StripeInput } from "./StripeInput";
 import { StripeElementType } from "@stripe/stripe-js";
 
 interface Props {
-  cardState: { elementError: { [key in StripeElementType]?: string } };
+  cardState: {elementError: {[key in StripeElementType]?: string}},
   onCardInputChange: (event: any) => void;
 }
 
 export default function PaymentForm({cardState, onCardInputChange}: Props) {
   const { control } = useFormContext();
-
 
   return (
     <>
@@ -22,7 +21,10 @@ export default function PaymentForm({cardState, onCardInputChange}: Props) {
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <AppTextInput
-            name='nameOnCard' label='Name on card' control={control} />
+            name='nameOnCard'
+            label='Name on card'
+            control={control}
+          />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
@@ -36,7 +38,7 @@ export default function PaymentForm({cardState, onCardInputChange}: Props) {
             variant="outlined"
             InputLabelProps={{ shrink: true }}
             InputProps={{
-              InputComponent: StripeInput,
+              inputComponent: StripeInput,
               inputProps: {
                 component: CardNumberElement
               }
@@ -55,7 +57,7 @@ export default function PaymentForm({cardState, onCardInputChange}: Props) {
             variant="outlined"
             InputLabelProps={{ shrink: true }}
             InputProps={{
-              InputComponent: StripeInput,
+              inputComponent: StripeInput,
               inputProps: {
                 component: CardExpiryElement
               }
@@ -74,14 +76,13 @@ export default function PaymentForm({cardState, onCardInputChange}: Props) {
             variant="outlined"
             InputLabelProps={{ shrink: true }}
             InputProps={{
-              InputComponent: StripeInput,
+              inputComponent: StripeInput,
               inputProps: {
                 component: CardCvcElement
               }
             }}
           />
         </Grid>
-
       </Grid>
     </>
   );
