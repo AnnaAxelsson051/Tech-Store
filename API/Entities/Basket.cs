@@ -1,40 +1,34 @@
-
-using System.Collections.Generic;
-
 namespace API.Entities
 {
     public class Basket
     {
         public int Id { get; set; }
         public string BuyerId { get; set; }
-        public List<BasketItem> Items { get; set; } = new();
-        //Creating a new list of items when creating a new basket
-
+        public List<BasketItem> Items { get; set; } = new List<BasketItem>();
         public string PaymentIntentId { get; set; }
-
         public string ClientSecret { get; set; }
 
-        //Checking if the item is already in basket, if not adding item to list
-        //If item already in basket adjusting its quantity
+
+        //Adding item if not already in basket otherwise adjusting quantity
         public void AddItem(Product product, int quantity)
-    {
-        if (Items.All(item => item.ProductId != product.Id))
         {
-            Items.Add(new BasketItem{Product = product, Quantity = quantity});
+            if (Items.All(item => item.ProductId != product.Id))
+            {
+                Items.Add(new BasketItem { Product = product, Quantity = quantity });
+                return;
+            }
+
+            var existingItem = Items.FirstOrDefault(item => item.ProductId == product.Id);
+            if (existingItem != null) existingItem.Quantity += quantity;
         }
-        var existingItem = Items.FirstOrDefault(item => item.ProductId == product.Id)
-        if (existingItem != null) existingItem.Quantity += quantity;
-    }
 
-//Selecting an item decreasing its quantity, or removing item
-    public void RemoveItem(int productId, int quantity)
-    {
-        var item = Items.FirstOrDefault(item => item.ProductId == productId)
-        if (item == null) return;
-        item.Quantity -= quantity;
-        if (item.Quantity == 0) Items.Remove(item);
-
-    }
-    
+        //Decreasing item quantity or removing item
+        public void RemoveItem(int productId, int quantity = 1)
+        {
+            var item = Items.FirstOrDefault(basketItem => basketItem.ProductId == productId);
+            if (item == null) return;
+            item.Quantity -= quantity;
+            if (item.Quantity == 0) Items.Remove(item);
+        }
     }
 }

@@ -1,4 +1,3 @@
-
 namespace API.DTOs
 {
     public class BasketItemDto
@@ -12,3 +11,5 @@ namespace API.DTOs
         public int Quantity { get; set; }
     }
 }
+
+

@@ -1,13 +1,14 @@
 using System.Text;
 using API.Data;
+using System.Text;
+using API.Data;
 using API.Entities;
-using API.MiddleWare;
+using API.Middleware;
 using API.RequestHelpers;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -45,8 +46,11 @@ builder.Services.AddSwaggerGen(c =>
             jwtSecurityScheme, Array.Empty<string>()
         }
     });
-
 });
+
+
+
+
 builder.Services.AddDbContext<StoreContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -92,6 +96,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+//app.UseDefaultFiles();
+//app.UseStaticFiles();
+
 app.UseCors(opt =>
 {
     opt.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("http://localhost:3000");
@@ -101,6 +108,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+// app.MapFallbackToController("Index", "Fallback");
 
 var scope = app.Services.CreateScope();
 var context = scope.ServiceProvider.GetRequiredService<StoreContext>();

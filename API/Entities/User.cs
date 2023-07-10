@@ -1,11 +1,10 @@
-﻿using System;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+
 namespace API.Entities
 {
-	public class User : IdentityUser 
-	{
-
-		public UserAddress Address { get; set; }
-	}
+    public class User : IdentityUser<int>
+    {
+        public UserAddress Address { get; set; }
+    }
 }
 

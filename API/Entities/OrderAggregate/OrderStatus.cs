@@ -1,12 +1,10 @@
-﻿using System;
-namespace API.Entities.OrderAggregate
+﻿namespace API.Entities.OrderAggregate
 {
-	public enum OrderStatus
-	{
-
-		Pending,
-		PaymentReceived,
-		PaymentFailed
-	}
+    public enum OrderStatus
+    {
+        Pending,
+        PaymentReceived,
+        PaymentFailed
+    }
 }
 

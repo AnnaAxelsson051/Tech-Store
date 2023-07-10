@@ -1,12 +1,11 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace API.Entities.OrderAggregate
 {
-	[Owned]
-	public class ShippingAddress : Address
-	{
-		
-	}
+    [Owned]
+    public class ShippingAddress : Address
+    {
+
+    }
 }
 
