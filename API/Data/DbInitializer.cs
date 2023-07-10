@@ -35,67 +35,67 @@ namespace API.Data
             {
                 new Product
                 {
-                    Name = "Angular Speedster Board 2000",
+                    Name = "Apple Watch SE black",
                     Description =
-                        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 20000,
-                    PictureUrl = "/images/products/sb-ang1.png",
-                    Brand = "Angular",
-                    Type = "Boards",
+                        "It keeps track of health, motivates to exercise and movement, and has innovative safety features such as crash and fall detection. With eSIM for your Apple Watch SE (2022) you also stay connected without the mobile phone.",
+                    Price = 329,
+                    PictureUrl = "/images/products/watch-black.png",
+                    Brand = "Apple",
+                    Type = "Watches",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Green Angular Board 3000",
-                    Description = "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
-                    Price = 15000,
-                    PictureUrl = "/images/products/sb-ang2.png",
-                    Brand = "Angular",
-                    Type = "Boards",
+                    Name = "Apple Watch SE white",
+                    Description = "The aluminum housing is light and made from 100 percent recycled aluminum in an alloy used in the aerospace industry. The sports band is made of a particularly durable fluoroelastomer. It's durable yet surprisingly soft and has an innovative pin buckle.",
+                    Price = 335,
+                    PictureUrl = "/images/products/watch-white.jpeg",
+                    Brand = "Apple",
+                    Type = "Watches",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Core Board Speed Rush 3",
+                    Name = "Apple Watch SE orange",
                     Description =
-                        "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-                    Price = 18000,
-                    PictureUrl = "/images/products/sb-core1.png",
-                    Brand = "NetCore",
-                    Type = "Boards",
+                        "The aluminum housing is light and made from 100 percent recycled aluminum in an alloy used in the aerospace industry. The sports band is made of a particularly durable fluoroelastomer. It's durable yet surprisingly soft and has an innovative pin buckle.",
+                    Price = 335,
+                    PictureUrl = "/images/products/watch-orange.jpeg",
+                    Brand = "Apple",
+                    Type = "Watches",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Net Core Super Board",
+                    Name = "Apple Watch SE olive",
                     Description =
-                        "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
+                        "The aluminum housing is light and made from 100 percent recycled aluminum in an alloy used in the aerospace industry. The sports band is made of a particularly durable fluoroelastomer. It's durable yet surprisingly soft and has an innovative pin buckle.",
                     Price = 30000,
-                    PictureUrl = "/images/products/sb-core2.png",
-                    Brand = "NetCore",
-                    Type = "Boards",
+                    PictureUrl = "/images/products/watch-olive.jpeg",
+                    Brand = "Apple",
+                    Type = "Watches",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "React Board Super Whizzy Fast",
+                    Name = "Apple Watch SE pink, refurbished",
                     Description =
-                        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 25000,
-                    PictureUrl = "/images/products/sb-react1.png",
-                    Brand = "React",
-                    Type = "Boards",
+                        "This refurbished™ Apple Watch SE is the perfect option for any bargain hunter. It offers sensational features at a sensational refurbished™ price.",
+                    Price = 249,
+                    PictureUrl = "/images/products/watch-pink.jpeg",
+                    Brand = "Apple",
+                    Type = "Watches",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Typescript Entry Board",
+                    Name = "Apple Watch SE blue, refurbished",
                     Description =
-                        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 12000,
-                    PictureUrl = "/images/products/sb-ts1.png",
-                    Brand = "TypeScript",
-                    Type = "Boards",
+                        "This refurbished™ Apple Watch SE is the perfect option for any bargain hunter. It offers sensational features at a sensational refurbished™ price.",
+                    Price = 249,
+                    PictureUrl = "/images/products/watch-blue.jpeg",
+                    Brand = "Apple",
+                    Type = "Watches",
                     QuantityInStock = 100
                 },
                 new Product
@@ -103,7 +103,7 @@ namespace API.Data
                     Name = "Core Blue Hat",
                     Description =
                         "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 1000,
+                    Price = 249,
                     PictureUrl = "/images/products/hat-core1.png",
                     Brand = "NetCore",
                     Type = "Hats",
@@ -111,46 +111,46 @@ namespace API.Data
                 },
                 new Product
                 {
-                    Name = "Green React Woolen Hat",
+                    Name = "Samsung Galaxy A54 violet",
                     Description =
-                        "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 8000,
-                    PictureUrl = "/images/products/hat-react1.png",
-                    Brand = "React",
-                    Type = "Hats",
+                        "Experience a smooth user experience thanks to the Samsung Galaxy A54 5G smartphone that offers a 6.4” FHD+ Super AMOLED screen with a 120Hz refresh rate, a 50MPX main camera, an extra-large 5000mAh battery and 25W fast charging.",
+                    Price = 464,
+                    PictureUrl = "/images/products/samsung-galaxy-a54-violet.png",
+                    Brand = "Samsung",
+                    Type = "Phones",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Purple React Woolen Hat",
+                    Name = "Samsung Galaxy A54 black",
                     Description =
-                        "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-                    Price = 1500,
-                    PictureUrl = "/images/products/hat-react2.png",
-                    Brand = "React",
-                    Type = "Hats",
+                        "Experience a smooth user experience thanks to the Samsung Galaxy A54 5G smartphone that offers a 6.4” FHD+ Super AMOLED screen with a 120Hz refresh rate, a 50MPX main camera, an extra-large 5000mAh battery and 25W fast charging.",
+                    Price = 464,
+                    PictureUrl = "/images/products/samsung-galaxy-a54-black.png",
+                    Brand = "Samsung",
+                    Type = "Phones",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Blue Code Gloves",
+                    Name = "Samsung Galaxy S21 pink, refurbished",
                     Description =
-                        "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+                        "Our refurbed™ Galaxy S21 5G is a top-of-the-range smartphone from Samsung that offers a host of premium features and an extraordinary design.",
                     Price = 1800,
-                    PictureUrl = "/images/products/glove-code1.png",
-                    Brand = "VS Code",
-                    Type = "Gloves",
+                    PictureUrl = "/images/products/samsung-galaxy-s21-pink.png",
+                    Brand = "Samsung",
+                    Type = "Phones",
                     QuantityInStock = 100
                 },
                 new Product
                 {
-                    Name = "Green Code Gloves",
+                    Name = "Samsung Galaxy S21 grey, refurbished",
                     Description =
-                        "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+                        "Our refurbed™ Galaxy S21 5G is a top-of-the-range smartphone from Samsung that offers a host of premium features and an extraordinary design.",
                     Price = 1500,
-                    PictureUrl = "/images/products/glove-code2.png",
-                    Brand = "VS Code",
-                    Type = "Gloves",
+                    PictureUrl = "/images/products/samsung-galaxy-s21-grey.png",
+                    Brand = "Samsung",
+                    Type = "Phones",
                     QuantityInStock = 100
                 },
                 new Product

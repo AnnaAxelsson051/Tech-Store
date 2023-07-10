@@ -7,7 +7,7 @@ import { store } from "../store/configureStore";
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
 
 axios.defaults.baseURL = 'http://localhost:5000/api/';
-StorageEvent.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 //Getting data response storing it
 const responseBody = (response: AxiosResponse) => response.data;
@@ -20,43 +20,43 @@ axios.interceptors.request.use(config => {
 
 
 axios.interceptors.response.use(async response => {
-    await sleep();
+    if (process.env.NODE_ENV === 'development') await sleep();
     const pagination = response.headers['pagination'];
-    if(pagination){
+    if (pagination) {
         response.data = new PaginatedResponse(response.data, JSON.parse(pagination));
         return response;
     }
     return response
 }, (error: AxiosError) => {
-    const { data, status } = error.response;
+    const {data, status} = error.response as AxiosResponse;
     switch (status) {
         case 400:
-        if (data.errors){
-            const modelStateErrors:string[] = [];
-            for (const key in data.errors){
-                if(data.errors[key]){
-                modelStateErrors.push(data.errors[key])
+            if (data.errors) {
+                const modelStateErrors: string[] = [];
+                for (const key in data.errors) {
+                    if (data.errors[key]) {
+                        modelStateErrors.push(data.errors[key])
+                    }
+                }
+                throw modelStateErrors.flat();
             }
-            }
-            //flatten array so one only gets back the two strings
-            throw modelStateErrors.flat();
+            toast.error(data.title);
+            break;
+            case 401:
+                toast.error(data.title);
+                break;
+            case 403: 
+                toast.error('You are not allowed to do that!');
+                break;
+            case 500:
+                router.navigate('/server-error', {state: {error: data}});
+                break;
+            default:
+                break;
         }
-            toast.error(data.title);
-            break;
-        case 401:
-            toast.error(data.title);
-            break;
-        case 403:
-            toast.error('You are not allowed to do that');
-            break;
-        case 500:
-            router.navigate('server-error', {state: {error: data}});
-            break;
-        default:
-            break;
-    }
-    return Promise.reject(error.response);
-})
+    
+        return Promise.reject(error.response);
+    })
 
 const requests = {
     get: (url: string, params?: URLSearchParams) => axios.get(url, {params}).then(responseBody),
@@ -71,12 +71,12 @@ const requests = {
     }).then(responseBody)
 }
 
-function createFormData(item:any) {
-let formData = new FormData();
-for (const key in item){
-    formData.append(key, item[key])
-}
-return formData;
+function createFormData(item: any) {
+    let formData = new FormData();
+    for (const key in item) {
+        formData.append(key, item[key])
+    }
+    return formData;
 }
 
 const Admin = {
