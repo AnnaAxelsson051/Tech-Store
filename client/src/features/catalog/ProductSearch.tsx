@@ -3,26 +3,25 @@ import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
 import { setProductParams } from "./catalogSlice";
 import { useState } from "react";
 
-export default function ProductSearcg(){
-    const {productParams} = useAppSelector(state => state.catalog);
+export default function Search() {
+    const { productParams } = useAppSelector(state => state.catalog);
     const [searchTerm, setSearchTerm] = useState(productParams.searchTerm);
     const dispatch = useAppDispatch();
 
-    //Delaying dispatch of action to the store
-const debouncedSearch = debounce((event:any) =>{
-    dispatch(setProductParams({searchTerm: event.target.value}))
-},1000)
+    const debouncedSearch = debounce((event: any) => {
+        dispatch(setProductParams({ searchTerm: event.target.value }))
+    }, 1000)
 
-    return(
+    return (
         <TextField
-        label='Search products'
-        variant="outlined"
-        fullWidth
-        value={searchTerm || ''}
-        onChange={(event: any) => {
-            setSearchTerm(event.target.value);
-            debouncedSearch(event);
-        }}
-    />
+            label='Search products'
+            variant='outlined'
+            fullWidth
+            value={searchTerm || ''}
+            onChange={(event: any) => {
+                setSearchTerm(event.target.value);
+                debouncedSearch(event);
+            }}
+        />
     )
 }

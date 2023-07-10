@@ -10,44 +10,42 @@ import { fetchProductAsync, productSelectors } from "./catalogSlice";
 
 //displays and manages the details of a specific product
 
-//ProductDetails extracts data from the Redux store using the useAppSelector hook and initializes 
-//various state variables using the useState hook
 export default function ProductDetails() {
-    const {basket, status} = useAppSelector(state => state.basket);
+    const { basket, status } = useAppSelector(state => state.basket);
     const dispatch = useAppDispatch();
     const { id } = useParams<{ id: string }>();
-    const product = useAppSelector(state => productSelectors.selectById(state, id));
+    const product = useAppSelector(state => productSelectors.selectById(state, id!));
     const {status: productStatus} = useAppSelector(state => state.catalog);
     const [quantity, setQuantity] = useState(0);
     const item = basket?.items.find(i => i.productId === product?.id);
 
-    //Getting the specific product
+    //Getting specific product
     useEffect(() => {
         if (item) setQuantity(item.quantity);
-        if (!product && id) dispatch(fetchProductAsync(parseInt(id)));
-    }, [id, item, dispatch, product])
+        if (!product && id) dispatch(fetchProductAsync(parseInt(id))) 
+     }, [id, item, product, dispatch]);
 
     // handling input change events and updating the quantity
-    function handleInputChange(event: any){
-        if(event.target.value >= 0){
-        setQuantity(parseInt(event.target.value));
+    function handleInputChange(e: any) {
+        if (e.target.value >= 0)
+            setQuantity(parseInt(e.target.value));
+    } 
+
+    //updating the shopping cart based on the 
+    //current quantity and item details.
+    function handleUpdateCart() {
+        if (!item || quantity > item?.quantity) {
+            const updatedQuantity = item ? quantity - item.quantity : quantity;
+            dispatch(addBasketItemAsync({productId: product?.id!, quantity: updatedQuantity}))
+        } else {
+            const updatedQuantity = item.quantity - quantity;
+            dispatch(removeBasketItemAsync({productId: product?.id!, quantity: updatedQuantity}))
         }
     }
 
-    // handles the logic for updating the shopping cart based on the 
-    //current quantity and item details.
-    function handleUpdateCart(){
-         if (!item || quantity > item.quantity){
-            const updatedQuantity = item ? quantity - item.quantity : quantity;
-            dispatch(addBasketItemAsync({productId: product?.id!, quantity: updatedQuantity})) 
-        }else{
-            const updatedQuantity = item.quantity - quantity;
-            dispatch(removeBasketItemAsync({productId: product?.id!, quantity: updatedQuantity}))
-         }
-    }
+    if (productStatus.includes('pending')) return <LoadingComponent message="Loading product..." />
 
-    if (productStatus.includes('pending')) return <LoadingComponent message='Loading product...'/>
-    if (!product) return <NotFound/>
+    if (!product) return <NotFound />
 
     return (
         <Grid container spacing={6}>
@@ -56,60 +54,59 @@ export default function ProductDetails() {
             </Grid>
             <Grid item xs={6}>
                 <Typography variant='h3'>{product.name}</Typography>
-                <Divider sx={{mb: 2}}/>
+                <Divider sx={{ mb: 2 }} />
                 <Typography variant='h4' color='secondary'>${(product.price / 100).toFixed(2)}</Typography>
-            <TableContainer>
-                <Table>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell>{product.name}</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Description</TableCell>
-                            <TableCell>{product.description}</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Type</TableCell>
-                            <TableCell>{product.type}</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Brand</TableCell>
-                            <TableCell>{product.brand}</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Quantity in stock</TableCell>
-                            <TableCell>{product.quantityInStock}</TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <Grid container spacing={2}>
-                <Grid item xs={6}>
-                    <TextField
-                    onChange={handleInputChange}
-                    variant='outlined'
-                    type='number'
-                    label='Quantity in cart'
-                    fullWidth
-                    value={quantity}
-                    />
+                <TableContainer>
+                    <Table>
+                        <TableBody sx={{ fontSize: '1.1em' }}>
+                            <TableRow>
+                                <TableCell>Name</TableCell>
+                                <TableCell>{product.name}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Description</TableCell>
+                                <TableCell>{product.description}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Type</TableCell>
+                                <TableCell>{product.type}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Brand</TableCell>
+                                <TableCell>{product.brand}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Quantity in stock</TableCell>
+                                <TableCell>{product.quantityInStock}</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                        <TextField
+                            onChange={handleInputChange}
+                            variant={'outlined'}
+                            type={'number'}
+                            label={'Quantity in Cart'}
+                            fullWidth
+                            value={quantity}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <LoadingButton
+                            disabled={(item?.quantity === quantity )|| (!item && quantity === 0)}
+                            loading={status.includes('pending')}
+                            onClick={handleUpdateCart}
+                            sx={{ height: '55px' }}
+                            color={'primary'}
+                            size={'large'}
+                            variant={'contained'}
+                            fullWidth>
+                            {item ? 'Update Quantity' : 'Add to Cart'}
+                        </LoadingButton>
+                    </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                <LoadingButton
-                disabled={item?.quantity === quantity || !item && quantity === 0}
-                loading={status.includes('pending')}
-                onClick={handleUpdateCart}
-                sx={{height: '55px'}}
-                color='primary'
-                size='large'
-                variant='contained'
-                fullWidth
-                >
-                    {item ? 'Update Quantity' : 'Add to cart'}
-                </LoadingButton>
-                </Grid>
-            </Grid>
             </Grid>
         </Grid>
     )
