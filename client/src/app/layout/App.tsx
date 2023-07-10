@@ -2,62 +2,60 @@
 import {Container, createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import Header from "./Header";
 import { useCallback, useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingComponent from "./LoadingComponent";
 import { useAppDispatch } from "../store/configureStore";
 import { fetchBasketAsync } from "../../features/basket/BasketSlice";
 import { fetchCurrentUser } from "../../features/account/accountSlice";
-
+import HomePage from "../../features/home/HomePage";
 
 function App() {
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
 
   const initApp = useCallback(async () => {
-    try{
+    try {
       await dispatch(fetchCurrentUser());
       await dispatch(fetchBasketAsync());
     } catch (error) {
-    console.log(error);  
+      console.log(error);
     }
-  }, [dispatch])
+  }, [dispatch]);
 
-
-  //Getting basket based on cookie
-  //getting basket from api
-  //catching error, turn of loading
   useEffect(() => {
-initApp().then(() => setLoading(false));
+    initApp().then(() => setLoading(false));
   }, [initApp])
 
   const [darkMode, setDarkMode] = useState(false);
-  const paletteType = darkMode ? 'dark' : 'light';
- const theme = createTheme({
-  palette:{
-    mode: paletteType,
-    background: {
-       default: paletteType === 'light' ? '#ffffff' : '#121212'
-}
+  const palleteType = darkMode ? 'dark' : 'light';
+  const theme = createTheme({
+    palette: {
+      mode: palleteType,
+      background: {
+        default: (palleteType === 'light') ? '#eaeaea' : '#121212'
+      }
+    }
+  })
+
+  function handleThemeChange() {
+    setDarkMode(!darkMode);
   }
- })
-
- //Toggle for darkmode
- function handleThemeChange(){
-  setDarkMode(!darkMode);
- }
-
- if (loading) return <LoadingComponent message="Initializing app..."/>
 
   return (
     <ThemeProvider theme={theme}>
-      <ToastContainer position="bottom-right" hideProgressBar theme="colored"/>
-    <CssBaseline/> {/*Removes margins on navbar*/}
-      <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
-      <Container>
-   <Outlet/>
-    </Container>
+      <ToastContainer position="bottom-right" hideProgressBar theme="colored" />
+      <CssBaseline />
+      <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
+      {loading ? <LoadingComponent message="Initialising app..." />
+          : location.pathname === '/' ? <HomePage />
+          : <Container sx={{mt: 4}}>
+              <Outlet />
+            </Container>
+      }
+
     </ThemeProvider>
   );
 }

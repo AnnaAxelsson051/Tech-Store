@@ -50,7 +50,6 @@ builder.Services.AddSwaggerGen(c =>
 
 
 
-
 builder.Services.AddDbContext<StoreContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));

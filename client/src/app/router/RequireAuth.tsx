@@ -11,14 +11,13 @@ export default function RequireAuth({roles}: Props) {
     const location = useLocation();
 
     if (!user) {
-        return <Navigate to='/login' state={{from: location}}/>
+        return <Navigate to='/login' state={{from: location}} />
     }
 
-    if(roles && !roles.some(r => user.roles?.includes(r))){
-        toast.error('Not authorized to access this area');
-        return <Navigate to='/catalog'/>
+    if (roles && !roles.some(r => user.roles?.includes(r))) {
+        toast.error('Not authorised to access this area');
+        return <Navigate to='/catalog' />
     }
 
-    return <Outlet/>
+    return <Outlet />
 }
-

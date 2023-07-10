@@ -6,7 +6,7 @@ import { store } from "../store/configureStore";
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
 
-axios.defaults.baseURL = 'http://localhost:5152/api/';
+axios.defaults.baseURL = 'http://localhost:5000/api/';
 StorageEvent.defaults.withCredentials = true;
 
 //Getting data response storing it
