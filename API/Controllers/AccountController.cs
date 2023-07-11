@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    //Dependency injection
     public class AccountController : BaseApiController
     {
         private readonly UserManager<User> _userManager;
@@ -29,6 +30,7 @@ namespace API.Controllers
             _userManager = userManager;
         }
 
+        //Loggin in user assigning them a basket and token
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
@@ -55,6 +57,7 @@ namespace API.Controllers
             };
         }
 
+       //Registers user or throws an error with description
         [HttpPost("register")]
         public async Task<ActionResult> RegisterUser(RegisterDto registerDto)
         {
@@ -77,6 +80,7 @@ namespace API.Controllers
             return StatusCode(201);
         }
 
+        //retrieves the details of the currently authenticated user
         [Authorize]
         [HttpGet("currentUser")]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
@@ -93,6 +97,7 @@ namespace API.Controllers
             };
         }
 
+         //Retrieves addres of currently logged in user
         [Authorize]
         [HttpGet("savedAddress")]
         public async Task<ActionResult<UserAddress>> GetSavedAddress()
