@@ -8,7 +8,7 @@
 
 ## Description
 
-An E-Commerce store application built with .Net WebAPI, C# and React. Customers can register accounts in the store and their passwords are hashed for optimal security. They can then log in and filter, sort and search for products, add items to basket, modify basket, place order and pay for it with Stripe. Administrators can log in and add, delete and modify products in the product system with details and image. Functionalities include cookie storeage, role based security, light / darkmode amongst other things.
+An E-Commerce store application built with .Net WebAPI, C# and React. Customers can register accounts in the store and their passwords are hashed for optimal security. They can then log in and filter, sort and search for products, add products to basket, modify basket, place order and pay for it with Stripe. Administrators can log in and add, delete and modify products in the product system with details and image. Functionalities include cookie storeage, role based security, light / darkmode.
 
 ---
 
@@ -23,5 +23,4 @@ An E-Commerce store application built with .Net WebAPI, C# and React. Customers 
 - Entity Framework
 - ASP.NET Identity
 - Stripe 
-- PCI Compliance
 - Material UI
