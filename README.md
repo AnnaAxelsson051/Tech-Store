@@ -8,16 +8,16 @@
 
 ## Description
 
-This is a Full stack E-Commerce store built with .Net WebAPI, C# and React. 
-The application allows for customer account registration and passwords are hashed. Customers can log in and filter, sort and search for products, add products to basket, modify basket, place orders and pay for them with Stripe. Administrators can log in and add, delete and modify products in the product system with details and image. Functionalities include cookie storeage, role based security, light / darkmode and other things.
+This is a Full stack E-Commerce store built with .NET Web API, C# and React. 
+The application allows for customer account registration and passwords are hashed. Customers can log in and filter, sort and search for products, add products to basket, modify basket, place orders and pay for them with Stripe. Administrators can log in and add, delete and modify products in the product system with details and image. Functionalities include cookie storage, role based security, light / darkmode and other things.
 
-The aim was to learn basic concepts of .Net WebAPI, React / Typescript and get a clear understanding of the achitecture of a Full stack .NET E-commerce store-size application as well as the security implementations and payment processing functionalities required in such an application.
+The goal was to learn basic concepts of .NET Web API, React / Typescript and get a clear understanding of the achitecture of a Full stack .NET E-commerce store-size application as well as the security implementations and payment processing functionalities required in such an application.
 
 ---
 
 ## Technologies used:
 
-- .Net WebAPI 
+- .NET Web API 
 - C#
 - SQLite
 - Entity Framework
