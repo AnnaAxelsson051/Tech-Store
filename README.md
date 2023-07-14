@@ -19,10 +19,10 @@ The goal was to learn basic concepts of .NET Web API, React / Typescript and get
 
 - .NET Web API 
 - C#
-- SQLite
 - Entity Framework
 - ASP.NET Identity
 - Stripe 
+- SQLite
 - React
 - TypeScript
 - Material UI
