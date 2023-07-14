@@ -1,4 +1,4 @@
-# TECH STORE
+# Tech Store
 
 ## User Interface
 
