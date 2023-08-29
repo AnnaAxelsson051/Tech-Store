@@ -14,7 +14,7 @@ The project's aim was to acquire fundamental proficiency in .NET Web API, React/
 
 ---
 
-## Technologies used:
+## Technologies used
 
 - .NET Web API 
 - C#
